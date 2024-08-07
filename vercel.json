@@ -3,7 +3,21 @@
     {
       "source": "/api/auth/:path*",
       "destination": "/api/auth.js"
+    },
+    {
+      "source": "/api/list",
+      "destination": "/api/list.js"
+    },
+    {
+      "source": "/api/image/:id/:width/:height",
+      "destination": "/api/image.js"
+    },
+    {
+      "source": "/api/image/:id/:square",
+      "destination": "/api/image.js"
     }
+
+
   ]
 }
 
