@@ -1,12 +1,5 @@
 const crypto = require('crypto');
 
-// Initialize with a sample client
-// clients.set('29352735982374239857', {
-//   name: 'Example App',
-//   secret: 'sample_secret',
-//   redirectUris: ['https://example-app.com/callback']
-// });
-
 function generateRandomString(length) {
   return crypto.randomBytes(length).toString('hex');
 }
@@ -34,11 +27,6 @@ function handleAuthorize(req, res) {
   if (response_type !== 'code' || !client_id || !redirect_uri) {
     return res.status(400).json({ error: 'Invalid request' });
   }
-
-  // const client = clients.get(client_id);
-  // if (!client || !client.redirectUris.includes(redirect_uri)) {
-  //   return res.status(400).json({ error: 'Invalid client or redirect URI' });
-  // }
 
   // Generate an authorization code
   const code = generateRandomString(16);
@@ -80,21 +68,6 @@ async function handleToken(req, res) {
   if (grant_type !== 'authorization_code' || !code || !redirect_uri || !client_id || !client_secret) {
     return res.status(400).json({ error: 'Invalid request' });
   }
-
-  // const client = clients.get(client_id);
-  // if (!client || client.secret !== client_secret || !client.redirectUris.includes(redirect_uri)) {
-  //   return res.status(400).json({ error: 'Invalid client' });
-  // }
-
-  // const authCode = authorizationCodes.get(code);
-  // if (!authCode || authCode.client_id !== client_id || authCode.redirect_uri !== redirect_uri) {
-  //   return res.status(400).json({ error: 'Invalid authorization code' });
-  // }
-
-  // accessTokens.set(accessToken, { client_id, scope: authCode.scope });
-
-  // Remove the used authorization code
-  // authorizationCodes.delete(code);
 
   const accessToken = generateRandomString(32);
   const refreshToken = generateRandomString(32);
