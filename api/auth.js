@@ -58,7 +58,7 @@ async function handleToken(req, res) {
     return res.json({
       access_token: accessToken,
       token_type: 'Bearer',
-      expires_in: 3600,
+      expires_in: 300,
       refresh_token: refreshToken,
       scope: "fun"
     });
@@ -78,7 +78,7 @@ async function handleToken(req, res) {
   return res.json({
     access_token: accessToken,
     token_type: 'Bearer',
-    expires_in: 3600,
+    expires_in: 300,
     refresh_token: refreshToken,
     scope: "fun"
   });
