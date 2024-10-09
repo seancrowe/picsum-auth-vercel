@@ -34,6 +34,7 @@ function handleAuthorize(req, res) {
   console.log("Code", code);
   // Redirect back to the client
   const redirectUrl = new URL(redirect_uri);
+  console.log("Redirect URL", redirect_uri);
   redirectUrl.searchParams.append('code', code);
   if (state) {
     redirectUrl.searchParams.append('state', state);
@@ -55,6 +56,7 @@ async function handleToken(req, res) {
     const refreshToken = generateRandomString(32);
 
     console.log("Refresh", accessToken);
+    console.log("Redirect URL", redirect_uri);
     return res.json({
       access_token: accessToken,
       token_type: 'Bearer',
